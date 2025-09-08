@@ -11,21 +11,19 @@ import { Icon } from "astro-icon/components";
     aria-label="Global"
     class="sm:flex sm:justify-between sm:px-4 min-h-full max-w-screen items-center text-white text-xs sm:text-2xl md:text-3xl"
   >
-    <section class="flex justify-between items-center">
+    <section id="menu-button" class="flex justify-between items-center">
       <Image
         class="size-20 sm:size-25 rounded-full aspect-square"
         src={Logo}
         alt="SmartPages Logo"
       />
-      <button class="cursor-pointer">
-        <Icon
-          class="text-white size-8 sm:hidden"
-          name="mdi:format-list-bulleted"
-        />
+      <button class="cursor-pointer sm:hidden">
+        <Icon class="text-white size-8" name="mdi:format-list-bulleted" />
       </button>
     </section>
     <div
-      class="flex flex-col sm:flex-row items-end text-center gap-2 text-sm font-bold sm:text-xl sm:gap-4 md:text-2xl md:gap-6 lg:text-3xl"
+      id="menu"
+      class="hidden sm:flex flex-col sm:flex-row items-center text-center gap-2 text-lg font-bold sm:text-xl sm:gap-4 md:text-2xl md:gap-6 lg:text-3xl"
     >
       <a class="transition-colors hover:text-gray-200" href="#"> Services </a>
       <a class="transition-colors hover:text-gray-200" href="#"> Projects </a>
@@ -38,4 +36,13 @@ import { Icon } from "astro-icon/components";
       <a class="transition-colors hover:text-gray-200" href="#"> Contact </a>
     </div>
   </nav>
+  <script is:inline>
+    document
+      .getElementById("menu-button")
+      .addEventListener("click", function () {
+        const menu = document.getElementById("menu");
+        menu.classList.toggle("hidden");
+        menu.classList.toggle("flex");
+      });
+  </script>
 </header>
